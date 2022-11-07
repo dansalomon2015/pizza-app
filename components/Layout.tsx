@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Footer, Navbar } from ".";
 
-const Layout: FC<{ children: JSX.Element }> = ({ children }) => {
+export const Layout: FC<{ children: JSX.Element }> = ({ children }) => {
     return (
         <>
             <Navbar />
@@ -10,5 +10,3 @@ const Layout: FC<{ children: JSX.Element }> = ({ children }) => {
         </>
     );
 };
-
-export default Layout;

@@ -11,3 +11,9 @@ export interface IProduct {
     prices: number[];
     extraOption: IOption[];
 }
+
+export type StoreStateType = {
+    products: IProduct[];
+    total: number;
+    quantity: number;
+};

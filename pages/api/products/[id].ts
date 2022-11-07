@@ -5,21 +5,25 @@ import { IProduct } from "types";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<IProduct[]>
+    res: NextApiResponse<IProduct>
 ) {
-    const { method, body } = req;
+    const {
+        method,
+        body,
+        query: { id },
+    } = req;
 
     await dbConnect();
 
     if (method === "GET") {
         try {
-            const products = await Product.find();
-            res.status(200).json(products);
+            const product = await Product.findById(id);
+            res.status(200).json(product);
         } catch (error) {
             res.status(500).json(error as any);
         }
     }
-    if (method === "POST") {
+    if (method === "PUT") {
         try {
             const product = new Product({ ...body });
             await product.save();
